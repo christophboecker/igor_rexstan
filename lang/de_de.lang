@@ -1,0 +1,53 @@
+# RexStan Original
+igor_rexstan_analysis = Web UI Analyse
+igor_rexstan_settings = Einstellungen
+igor_rexstan_summary = Zusammenfassung
+igor_rexstan_readme = Readme
+igor_rexstan_faq = FAQ
+
+# pages
+igor_rexstan_replaced_warning = Angepasste {0}-Seite via Addon Igor\Rexstan.
+igor_rexstan_see_faq = Weitere Informationen in den FAQ
+
+# settings-form - Tab-Menü
+igor_rexstan_error_header = PHPSTAN: Fehler
+igor_rexstan_version_sapi = SAPI
+igor_rexstan_version_cli = CLI
+
+# settings-Form fields
+igor_rexstan_sf_tabs = PhpStan-Konfiguration|Analyse-Scope|Anzeige-Optionen
+igor_rexstan_sf_level_label = Level
+igor_rexstan_sf_level_notice = "0" ist die einfachste and "9" die strengste Analyse - siehe <a href="https://phpstan.org/user-guide/rule-levels">PHPStan Rule Levels</a>
+igor_rexstan_sf_extensions_label = PHPStan Extensions
+igor_rexstan_sf_extensions_notice = Weiterlesen bzgl. der verf&uuml;gbaren Extensions: {0}
+igor_rexstan_sf_php_label = PHP-Version
+igor_rexstan_sf_php_notice = <a href="https://phpstan.org/config-reference#phpversion">Referenz PHP-Version</a> für die Code-Analyse
+igor_rexstan_sf_baseline_label = Baseline
+igor_rexstan_sf_baseline_choice_1 = Baseline verwenden
+igor_rexstan_sf_baseline_choice_2 = Ungenutzte Baseline Probleme melden
+igor_rexstan_sf_baseline_notice = {0}Weiterlesen: <a href="https://phpstan.org/user-guide/baseline">Baseline</a>, <a href="https://phpstan.org/user-guide/ignoring-errors#reporting-unused-ignores">reportUnmatchedIgnoredErrors</a>
+igor_rexstan_sf_addons_label = AddOns, die untersucht werden sollen
+igor_rexstan_sf_exclude_label = Keine Analyse
+igor_rexstan_sf_exclude_notice = Einzelne Dateien oder Verzeichnisse scannen, aber aus der Analyse ausschließen; jede Zeile ein Ausschluß. Bsp: */xyz.php oder */pages/*test.php (siehe <a href="https://www.php.net/manual/function.fnmatch.php">fnmatch()</a>)<br>«./myaddon/...» «~/redaxo/addons/mayaddon/...»
+igor_rexstan_sf_skip_label = Komplett überspringen
+igor_rexstan_sf_skip_notice = Einzelne Dateien oder Verzeichnisse komplett ausschließen (Scan und Analyse); jede Zeile ein Ausschluß. Bsp: */lib/xyz.php oder */pages (siehe <a href="https://www.php.net/manual/function.fnmatch.php">fnmatch()</a>)
+##igor_rexstan_sf_baseline_label = Baseline verwenden
+##igor_rexstan_sf_baseline_notice = Weiterlesen: <a href="https://phpstan.org/user-guide/baseline">Baseline-Erklärung</a>
+##igor_rexstan_sf_baseline_editor = Baseline im Editor öffnen
+igor_rexstan_sf_collapse_label = Meldungen einblenden 
+igor_rexstan_sf_collapse_option = Neue Dateien im Analyse-Ergebnis aufblenden
+igor_rexstan_sf_clearcache = PhpStan-Cache löschen
+igor_rexstan_sf_clearcache_options = Nicht löschen|Einmalig löschen|Immer löschen
+igor_rexstan_sf_tipkey_label = Tips suchen
+igor_rexstan_sf_tipkey_notice = Kürzel/Suchbegriff im Suchfenster zur Auswahl der Meldungen mit Tip. 
+igor_rexstan_sf_tip = Lösungshinweise
+igor_rexstan_sf_tip_visible = sofort aufblenden
+
+# Analysis results
+igor_rexstan_analysis_header_a = Ergebnisse für PhpStan-Level
+igor_rexstan_analysis_header_b = Fehler insgesamt:
+igor_rexstan_analysis_header_c = Betroffene Dateien:
+igor_rexstan_analysis_success = Gratulation, es wurden keine Fehler in Level {0} gefunden.
+igor_rexstan_analysis_nextlevel = In den <a href="{0}">Einstellungen</a>, solltest du jetzt das nächste Level anvisieren.
+igor_rexstan_analysis_tip = Tip anzeigen/ausblenden
+igor_rexstan_analysis_refresh = Neu analysieren

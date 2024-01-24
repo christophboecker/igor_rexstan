@@ -1,0 +1,21 @@
+package: igor_rexstan
+version: '0.1.0'               # BigMac, initial, 12.11.2023
+author: 'Christoph Böcker'
+supportpage: '<none>'
+
+pages:
+    rexstan/settings:
+        title: translate:igor_rexstan_settings
+        icon: fa fa-warning text-info
+    rexstan/analysis:
+        title: translate:igor_rexstan_analysis
+        icon: fa fa-warning text-info
+        linkAttr: 
+            onclick: 'Igor.rex_loader.show()'
+
+requires:
+    php:
+        version: '^8.1'
+    packages:
+        rexstan: '^1.0.107'
+    redaxo: '^5.13.0'

@@ -1,0 +1,233 @@
+@charset "UTF-8";
+/* Project-Addon, Plugin Rexstan */
+/**
+ * Hinterlegt im bootstrap-select die aktuelle Auswahl 
+ */
+.bootstrap-select li.selected {
+  background-color: #f3f6fb;
+}
+/**
+ * stammt aus dem Original-CSS von Rexstan 
+ * Formatiert die Erfolgsmeldung
+ */
+.rexstan-achievement {
+  font-size: 50px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* see https://github.com/redaxo/redaxo/issues/5316 */
+.form-control-clear {
+  color: #324050;
+  /* black; */
+}
+body.rex-theme-dark .form-control-clear {
+  color: rgba(255, 255, 255, 0.75);
+}
+@media (prefers-color-scheme: dark) {
+  body.rex-has-theme:not(.rex-theme-light) .form-control-clear {
+    color: rgba(255, 255, 255, 0.75);
+  }
+}
+rexstan-analysis {
+  display: block;
+  /**
+     * Fixiert die Hauptüberschrift
+     */
+  /**
+     * setzt in den Panel-Options rechts in den Headern mehrere Elemente
+     * sauber nebeneinander statt untereinander
+     */
+}
+rexstan-analysis .rexstan-sticky-headline {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+rexstan-analysis .rex-panel-options {
+  display: inline-flex;
+}
+rexstan-messages {
+  display: block;
+  /**
+     * Die Header der Dateisektionen müssen unter dem Hauptheader stoppen
+     * der tatsächliche top-Wert wird per JS gesetzt
+     * padding schaft Platz für das Collapse-Status--Symbol (:before)
+     */
+  /**
+     * Alle Messages, die nicht den Suchkriterien entsprechen, ausblenden.
+     * Dazu werden per JS der Container auf .rexstan-search-applied gesetzt und 
+     * die Einträge mit Treffer .rexstan-search-hit markiert
+     * Das ist etwas von Hinten durch die Brust ins Auge, aber die Marker werden so
+     * für die automatischen Zähler benötigt
+     */
+  /**
+     * Farbe für den Badge, der die Suchtreffer zählt
+     */
+}
+rexstan-messages .panel-heading {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding-left: 5rem;
+  /**
+        * Symbol für den Collapse-Status
+        */
+  /**
+         * Refresh-Button im Section-Title ausblenden, wenn Messages ausgeblendet
+         * Refesh macht dann wenig Sinn; man sieht ja nix.
+         */
+}
+rexstan-messages .panel-heading:before {
+  content: "";
+  font-family: FontAwesome;
+  font-size: 140%;
+  position: absolute;
+  left: 15px;
+}
+rexstan-messages .panel-heading.collapsed:before {
+  content: "";
+}
+rexstan-messages .panel-heading.collapsed rexstan-trigger[event="rexstan:refresh"] {
+  display: none;
+}
+rexstan-messages.rexstan-search-applied rexstan-message:not(.rexstan-search-hit) {
+  display: none;
+}
+rexstan-messages .rexstan-badge-success {
+  background-color: #5bb585 !important;
+  color: #fff;
+}
+/**
+ * rexstan-message als grid-Container zur flexiblen Anzeige von Zeilennummer, Message und Tip
+ */
+rexstan-message {
+  display: grid;
+  grid-template-columns: 6rem auto 1fr;
+  grid-template-areas: "line tipbtn searchitem" ". . tip";
+  column-gap: 5px;
+  width: 100%;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ddd;
+  /**
+     * Im Message-Text die Suchtreffer hervorheben
+     */
+  /**
+     * Elemente im Container: .rexstan-line-number
+     * Die Zeilennummer (zeile im Quelltext der Datei) wird rechtbündig
+     * angezeigt. Die Feldbreite regelt das Grid 
+     */
+  /**
+     * Elemente im Container: .rexstan-message-text
+     */
+  /**
+     * Elemente im Container: .btn-tip
+     * Der Button ist nur sichtbar, wenn es für die Message einen Tip gibt
+     * visibility:hidden damit trotzdem der Platz belegt wird und die Ansicht stimmt.
+     * wenn die Message mit Tip ist, dann ist das mittele .rexstan-has-tip markiert
+     */
+  /**
+     * Elemente im Container: .rexstan-tip
+     * Der Tip-Text optisch aufbereitet
+     * Über den tip-btn kann der Tip ausgeblendet werden (.rexstan-tip-closed)
+     */
+}
+rexstan-message:last-child {
+  border-bottom: 0;
+}
+rexstan-message:hover {
+  background-color: #f5f5f5;
+}
+rexstan-message mark {
+  background-color: transparent;
+  color: #d9534f;
+  padding: 0;
+}
+rexstan-message > .rexstan-line-number {
+  grid-area: line;
+  text-align: right;
+}
+rexstan-message > .rexstan-message-text {
+  grid-area: searchitem;
+  justify-self: start;
+}
+rexstan-message > .btn-tip {
+  grid-area: tipbtn;
+  visibility: hidden;
+  border: 1px solid;
+  border-color: #d9534f;
+  color: #c9302c;
+  background-color: #fbffd6;
+}
+rexstan-message.rexstan-has-tip > .btn-tip {
+  visibility: inherit;
+}
+rexstan-message > .rexstan-tip {
+  grid-area: tip;
+  justify-self: flex-start;
+  border: 1px solid;
+  border-color: #96e0b9;
+  border-radius: 10px;
+  background-color: #e9f5ef;
+  padding: 0 1rem;
+}
+rexstan-message.rexstan-tip-closed > .rexstan-tip {
+  display: none;
+}
+/* ---------- dark mode ---------------*/
+body.rex-theme-dark .bootstrap-select li.selected {
+  background-color: #114b7a;
+}
+body.rex-theme-dark rexstan-messages .rexstan-badge-success {
+  background-color: #5bb585 !important;
+  color: #fff;
+}
+body.rex-theme-dark rexstan-message {
+  border-bottom-color: #2e3b4a;
+}
+body.rex-theme-dark rexstan-message:hover {
+  background-color: #26323f;
+}
+body.rex-theme-dark rexstan-message mark {
+  background-color: transparent;
+  color: #d9534f;
+}
+body.rex-theme-dark rexstan-message > .btn-tip {
+  border-color: #801919;
+  color: rgba(255, 255, 255, 0.75);
+  background-color: #1867a6;
+}
+body.rex-theme-dark rexstan-message > .rexstan-tip {
+  border-color: #0d6a38;
+  background-color: #1f3d3c;
+}
+@media (prefers-color-scheme: dark) {
+  body:not(.rex-theme-light) .bootstrap-select li.selected {
+    background-color: #114b7a;
+  }
+  body:not(.rex-theme-light) rexstan-messages .rexstan-badge-success {
+    background-color: #5bb585 !important;
+    color: #fff;
+  }
+  body:not(.rex-theme-light) rexstan-message {
+    border-bottom-color: #2e3b4a;
+  }
+  body:not(.rex-theme-light) rexstan-message:hover {
+    background-color: #26323f;
+  }
+  body:not(.rex-theme-light) rexstan-message mark {
+    background-color: transparent;
+    color: #d9534f;
+  }
+  body:not(.rex-theme-light) rexstan-message > .btn-tip {
+    border-color: #801919;
+    color: rgba(255, 255, 255, 0.75);
+    background-color: #1867a6;
+  }
+  body:not(.rex-theme-light) rexstan-message > .rexstan-tip {
+    border-color: #0d6a38;
+    background-color: #1f3d3c;
+  }
+}
+
