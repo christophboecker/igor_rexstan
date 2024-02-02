@@ -57,13 +57,13 @@ if (is_string($phpstanResult)) {
     if (false !== stripos($phpstanResult, "neon' is missing or is not readable.")) {
         // TODO: Text nach lang übertragen
         echo rex_view::warning(
-            "Das Einstellungsformat hat sich geändert. Bitte die <a href='". $settingsUrl ."'>Einstellungen öffnen</a> und erneut abspeichern. <br/><br/>".nl2br($phpstanResult)
+            "Das Einstellungsformat hat sich geändert. Bitte die <a href='" . $settingsUrl . "'>Einstellungen öffnen</a> und erneut abspeichern. <br/><br/>" . nl2br($phpstanResult),
         );
     } else {
         echo rex_view::error(
             // TODO: Text nach lang übertragen
             '<h4>PHPSTAN: Fehler</h4>'
-                .nl2br($phpstanResult)
+                . nl2br($phpstanResult),
         );
     }
 
@@ -80,7 +80,7 @@ if (0 < $phpstanResult['totals']['errors']) {
     // TODO: Text nach lang übertragen
     $msg = '<h4>PHPSTAN: Laufzeit-Fehler</h4><ul>';
     foreach ($phpstanResult['errors'] as $error) {
-        $msg .= '<li>'.nl2br($error).'<br /></li>';
+        $msg .= '<li>' . nl2br($error) . '<br /></li>';
     }
     $msg .= '</li>';
     echo rex_view::error($msg);
@@ -106,7 +106,7 @@ if (array_key_exists('N/A', $phpstanResult['files'])) {
  * PhPStan hat die Dateien analysiert und findet keinen Fehler.
  */
 if (0 === $phpstanResult['totals']['file_errors']) {
-    $level = intval(rex_config::get('rexstan', 'level', 0));
+    $level = (int) rex_config::get('rexstan', 'level', 0);
     $fragment = new rex_fragment();
     $fragment->setVar('level', $level);
     echo $fragment->parse('analysis_success.php');
@@ -119,7 +119,7 @@ if (0 === $phpstanResult['totals']['file_errors']) {
 $initialExpand = '|1|' === rex_config::get('rexstan', 'open', '|1|') ? '1' : '0';
 $searchKey4Tips = rex_config::get('rexstan', 'tip_key', '^');
 $searchKey4Tips = '' === $searchKey4Tips ? '^' : $searchKey4Tips;
-echo '<script>Rexstan.initialCollapse=\''.$initialExpand.'\';Rexstan.searchKey4Tips=\''.$searchKey4Tips.'\'</script>';
+echo '<script>Rexstan.initialCollapse=\'' . $initialExpand . '\';Rexstan.searchKey4Tips=\'' . $searchKey4Tips . '\'</script>';
 
 echo '<rexstan-analysis class="rex-page-section">';
 

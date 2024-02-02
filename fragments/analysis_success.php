@@ -12,13 +12,9 @@ use rex_i18n;
 use rex_url;
 use rex_view;
 
-/**
- * @var rex_fragment $this
- */
+/** @var rex_fragment $this */
 
-/**
- * @var int $level 
- */
+/** @var int $level */
 $level = $this->level;
 
 $emoji = '';
@@ -52,7 +48,7 @@ switch ($level) {
         break;
 }
 
-echo '<span class="rexstan-achievement">'.$emoji .'</span>';
+echo '<span class="rexstan-achievement">' . $emoji . '</span>';
 echo rex_view::success(rex_i18n::msg('igor_rexstan_analysis_success', $level));
 
 if (9 === $level) {

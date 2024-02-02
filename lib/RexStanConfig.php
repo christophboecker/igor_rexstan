@@ -131,7 +131,7 @@ class RexStanConfig extends rex_config_form
 
         $extensionLinks = [];
         foreach (self::$phpstanExtensionDocLinks as $label => $link) {
-            $extensionLinks[] = '<a href="'.$link.'">'.$label.'</a>';
+            $extensionLinks[] = '<a href="' . $link . '">' . $label . '</a>';
         }
 
         $sapiVersion = (int) (PHP_VERSION_ID / 100);
@@ -150,7 +150,7 @@ class RexStanConfig extends rex_config_form
             }
         }
 
-        $this->addRawField('<rexstan-tabset data-navigation="'.$this->tabNavId.'"><div id="'.md5($this->tabTitle[0]).'" class="tab-pane fade">');
+        $this->addRawField('<rexstan-tabset data-navigation="' . $this->tabNavId . '"><div id="' . md5($this->tabTitle[0]) . '" class="tab-pane fade">');
 
         $field = $this->addInputField('number', 'level', null, ['class' => 'form-control', 'min' => 0, 'max' => 9]);
         $field->setLabel(rex_i18n::msg('igor_rexstan_sf_level_label'));
@@ -174,11 +174,11 @@ class RexStanConfig extends rex_config_form
         $field->addOption(rex_i18n::msg('igor_rexstan_sf_baseline_choice_1'), RexStanSettings::BASELINE_ENABLED);
         $field->addOption(rex_i18n::msg('igor_rexstan_sf_baseline_choice_2'), RexStanSettings::BASELINE_REPORT_UNMATCHED);
         $baselineFile = RexStanSettings::getAnalysisBaselinePath();
-        $url = \rex_editor::factory()->getUrl($baselineFile, 0);
-        $baselineButton = null !== $url ? '<a href="'. $url .'">Baseline im Editor &ouml;ffnen</a> - ' : '';
-        $field->setNotice(rex_i18n::rawMsg('igor_rexstan_sf_baseline_notice',$baselineButton));
+        $url = rex_editor::factory()->getUrl($baselineFile, 0);
+        $baselineButton = null !== $url ? '<a href="' . $url . '">Baseline im Editor &ouml;ffnen</a> - ' : '';
+        $field->setNotice(rex_i18n::rawMsg('igor_rexstan_sf_baseline_notice', $baselineButton));
 
-        $this->addRawField('</div><div id="'.md5($this->tabTitle[1]).'" class="tab-pane fade">');
+        $this->addRawField('</div><div id="' . md5($this->tabTitle[1]) . '" class="tab-pane fade">');
 
         $field = $this->addSelectField('addons', null, ['class' => 'form-control selectpicker', 'data-live-search' => 'true', 'required' => 'required']); // die Klasse selectpicker aktiviert den Selectpicker von Bootstrap
         $field->setAttribute('multiple', 'multiple');
@@ -196,8 +196,8 @@ class RexStanConfig extends rex_config_form
                     $select->addOption($availableAddon->getName() . ' ⇒ ' . $availablePlugin->getName(), RexStansettings::relativePath($availablePlugin->getPath()));
                 }
                 if ('developer' === $availableAddon->getName() && class_exists(rex_developer_manager::class)) {
-                    $select->addOption('developer: modules', RexStansettings::relativePath(rex_developer_manager::getBasePath() .'/modules/'));
-                    $select->addOption('developer: templates', RexStansettings::relativePath(rex_developer_manager::getBasePath() .'/templates/'));
+                    $select->addOption('developer: modules', RexStansettings::relativePath(rex_developer_manager::getBasePath() . '/modules/'));
+                    $select->addOption('developer: templates', RexStansettings::relativePath(rex_developer_manager::getBasePath() . '/templates/'));
                 }
                 $select->endOptgroup();
             }
@@ -211,15 +211,15 @@ class RexStanConfig extends rex_config_form
         $field->setLabel(rex_i18n::msg('igor_rexstan_sf_skip_label'));
         $field->setNotice(rex_i18n::rawMsg('igor_rexstan_sf_skip_notice'));
 
-#        $baselineFile = RexStanSettings::getAnalysisBaselinePath();
-#        $url = rex_editor::factory()->getUrl($baselineFile, 0);
-#        $baselineButton = null === $url ? '' : sprintf('<a href="%s">%s</a> | ', $url, rex_i18n::msg('igor_rexstan_sf_baseline_editor'));
-#        $field = $this->addCheckboxField('baseline');
-#        $field->setLabel(rex_i18n::msg('igor_rexstan_sf_baseline_label'));
-#        $field->addOption(rex_i18n::msg('igor_rexstan_sf_baseline_label'), 1);
-#        $field->setNotice($baselineButton . rex_i18n::rawMsg('igor_rexstan_sf_baseline_notice')); // 'Weiterlesen: <a href="https://phpstan.org/user-guide/baseline">Baseline erklärung</a>');
+        //        $baselineFile = RexStanSettings::getAnalysisBaselinePath();
+        //        $url = rex_editor::factory()->getUrl($baselineFile, 0);
+        //        $baselineButton = null === $url ? '' : sprintf('<a href="%s">%s</a> | ', $url, rex_i18n::msg('igor_rexstan_sf_baseline_editor'));
+        //        $field = $this->addCheckboxField('baseline');
+        //        $field->setLabel(rex_i18n::msg('igor_rexstan_sf_baseline_label'));
+        //        $field->addOption(rex_i18n::msg('igor_rexstan_sf_baseline_label'), 1);
+        //        $field->setNotice($baselineButton . rex_i18n::rawMsg('igor_rexstan_sf_baseline_notice')); // 'Weiterlesen: <a href="https://phpstan.org/user-guide/baseline">Baseline erklärung</a>');
 
-        $this->addRawField('</div><div id="'.md5($this->tabTitle[2]).'" class="tab-pane fade">');
+        $this->addRawField('</div><div id="' . md5($this->tabTitle[2]) . '" class="tab-pane fade">');
 
         $field = $this->addSelectField('clear_phpstan_cache', null, ['class' => 'form-control selectpicker']); // die Klasse selectpicker aktiviert den Selectpicker von Bootstrap
         $field->setLabel(rex_i18n::msg('igor_rexstan_sf_clearcache'));
@@ -350,11 +350,11 @@ class RexStanConfig extends rex_config_form
          */
         // relative Pfade in echte ändern
         $absoluteAddonPaths = array_map(static function ($v) {
-            return '/'.rex_path::absolute(rex_path::addonData('rexstan').$v).'/';
+            return '/' . rex_path::absolute(rex_path::addonData('rexstan') . $v) . '/';
         }, $neon['parameters']['paths']);
         $addonsWithPlugins = array_filter($absoluteAddonPaths, static function ($v) {
-#            dump([$v, $v.'plugins', is_dir($v.'plugins')]);
-            return is_dir($v.'plugins');
+            //            dump([$v, $v.'plugins', is_dir($v.'plugins')]);
+            return is_dir($v . 'plugins');
         });
         $plugins = array_filter($absoluteAddonPaths, static function ($v) {
             return is_int(stripos($v, '/plugins/'));
@@ -368,7 +368,7 @@ class RexStanConfig extends rex_config_form
             if (0 === count($selectedPlugins)) {
                 $pluginExcludes[] = $addon . 'plugins/';
             } else {
-                $pluginFinder = rex_finder::factory($addon.'plugins')->dirsOnly()->ignoreSystemStuff();
+                $pluginFinder = rex_finder::factory($addon . 'plugins')->dirsOnly()->ignoreSystemStuff();
                 $addonPlugins = [];
                 foreach ($pluginFinder as $plugin) {
                     $addonPlugins[] = $plugin->getPathname() . '/';
@@ -406,7 +406,7 @@ class RexStanConfig extends rex_config_form
             $property->setAccessible(true);
             /** @var string $UserConfigPath */
             $UserConfigPath = $property->invoke(null);
-            $prefix = '# rexstan auto generated file - do not edit, rename or remove (Project/rexstan | '.date('Y-m-d H:i:s').")\n\n";
+            $prefix = '# rexstan auto generated file - do not edit, rename or remove (Project/rexstan | ' . date('Y-m-d H:i:s') . ")\n\n";
             rex_file::put($UserConfigPath, $prefix . rex_string::yamlEncode($neon, 4));
         } catch (Exception $e) {
             return $e->getMessage();
@@ -483,7 +483,7 @@ class RexStanConfig extends rex_config_form
                 'itemClasses' => [],
                 'linkAttr' => ['data-toggle' => 'tab'],
                 'itemAttr' => ['role' => 'presentation'],
-                'href' => '#'.md5($v),
+                'href' => '#' . md5($v),
                 'title' => $v,
                 'icon' => false,
                 'active' => $k === $this->activeTab,
@@ -495,6 +495,6 @@ class RexStanConfig extends rex_config_form
         if ($stripContainer) {
             $HTML = preg_replace(['/^<div.*?>/', '/<\/div>$/'], '', $HTML) ?? '';
         }
-        return preg_replace('/^(<\w+\s)/', '$1id="'.$this->tabNavId.'"', $HTML) ?? '';
+        return preg_replace('/^(<\w+\s)/', '$1id="' . $this->tabNavId . '"', $HTML) ?? '';
     }
 }
