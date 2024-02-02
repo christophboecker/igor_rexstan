@@ -31,37 +31,23 @@ use function array_key_exists;
 use function dirname;
 use function is_int;
 
-/**
- * @var rex_fragment $this
- */
+/** @var rex_fragment $this */
 
-/**
- * @var string $link
- */
+/** @var string $link */
 $link = $this->link;
 
-/**
- * @var string $file
- */
+/** @var string $file */
 $file = $this->file ?? '';
 
-/**
- * @var array{errors:int,messages:array<int,array{message:string,line:int,ignorable:bool,tip?:string}>} $result
- */
+/** @var array{errors:int,messages:array<int,array{message:string,line:int,ignorable:bool,tip?:string}>} $result */
 $result = $this->result;
 
-/**
- * @var bool $showTip
- */
+/** @var bool $showTip */
 $showTip = $this->showTip ?? true;
 
 $editor = rex_editor::factory();
 
-
 $copy2clipboard = ' <rexstan-trigger class="btn btn-default btn-xs"><i class="fa fa-copy"></i></rexstan-trigger>';
-
-
-
 
 /**
  * Die Messages in HTML umsetzen.
@@ -74,23 +60,23 @@ foreach ($result['messages'] as $message) {
     $tip = '';
     if (array_key_exists('tip', $message)) {
         $tipClass = ' rexstan-has-tip' . $tipIsClosed;
-        $tip .= '<span class="rexstan-tip">' . $message['tip'] .'</span>';
+        $tip .= '<span class="rexstan-tip">' . $message['tip'] . '</span>';
     }
 
     $text = rex_escape($message['message']);
     $url = $editor->getUrl($link, $message['line']);
 
     if (null === $url) {
-        $text = '<span class="rexstan-message-text">'. $text .'</span>';
+        $text = '<span class="rexstan-message-text">' . $text . '</span>';
     } else {
-        $text = '<a class="rexstan-message-text" href="'. $url .'">'. $text .'</a>';
+        $text = '<a class="rexstan-message-text" href="' . $url . '">' . $text . '</a>';
     }
 
     $ignoreClass = $message['ignorable'] ? '' : ' text-danger';
 
-    $content .= '<rexstan-message class="'.$tipClass.'">';
-    $content .= '<span class="rexstan-line-number'.$ignoreClass.'">' .$message['line']. ':</span>';
-    $content .= '<rexstan-trigger class="btn btn-xs btn-default btn-tip" event="rexstan:tip" title="'.rex_i18n::msg('igor_rexstan_analysis_tip').'"><i class="fa fa-lightbulb-o"></i></rexstan-trigger> ';
+    $content .= '<rexstan-message class="' . $tipClass . '">';
+    $content .= '<span class="rexstan-line-number' . $ignoreClass . '">' . $message['line'] . ':</span>';
+    $content .= '<rexstan-trigger class="btn btn-xs btn-default btn-tip" event="rexstan:tip" title="' . rex_i18n::msg('igor_rexstan_analysis_tip') . '"><i class="fa fa-lightbulb-o"></i></rexstan-trigger> ';
     $content .= $text;
     $content .= $tip;
     $content .= '</rexstan-message>';
@@ -98,7 +84,7 @@ foreach ($result['messages'] as $message) {
 
 /**
  * ohne file-Angabe: nur den Code für die Messages ausgeben, keine Section mit Header.
- * für: api_rexstan
+ * für: api_rexstan.
  */
 if ('' === $file) {
     echo $content;
@@ -137,8 +123,8 @@ $fragment->setVar('sectionAttributes', [
 $fragment->setVar('options', $headerButtons, false);
 
 $fragment->setVar('title',
-    '<span class="text-muted">'.rex_escape(dirname($file)).DIRECTORY_SEPARATOR.'</span><strong>'.rex_escape(basename($file)).'</strong>&nbsp;'.
-    '<rexstan-amount class="badge" target="<<.panel > div" filter=":scope > rexstan-message"></rexstan-amount>&nbsp;'.
+    '<span class="text-muted">' . rex_escape(dirname($file)) . DIRECTORY_SEPARATOR . '</span><strong>' . rex_escape(basename($file)) . '</strong>&nbsp;' .
+    '<rexstan-amount class="badge" target="<<.panel > div" filter=":scope > rexstan-message"></rexstan-amount>&nbsp;' .
     '<rexstan-amount class="badge rexstan-badge-success" target="<<.panel > div" filter=":scope > rexstan-message.rexstan-search-hit" pattern="<i class=&quot;rex-icon rex-icon-search&quot;></i> = #" options="{&quot;childList&quot;:true,&quot;subtree&quot;:true,&quot;attributeFilter&quot;:[&quot;rexstan-search-hit&quot;]}"></rexstan-amount>',
     false);
 

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Test für den Workflow ...
+ *
  * Nur zulässig wenn als Admin angemeldet.
  *
  * Hier kein Namespace, da sonst die API-Klasse nicht gefunden wird.
@@ -76,7 +78,7 @@ class rex_api_rexstan extends rex_api_function
 
                     // phpstan-Fehlermeldung weiterleiten
                     if (is_string($phpstanResult)) {
-                        $error = rex_view::error('<h4>'.rex_i18n::msg('igor_rexstan_error_header').'</h4>'.nl2br($phpstanResult));
+                        $error = rex_view::error('<h4>' . rex_i18n::msg('igor_rexstan_error_header') . '</h4>' . nl2br($phpstanResult));
                         $this->response(1, $error);
                     }
                     // phpstan findet keine Meldungen mehr
@@ -95,7 +97,7 @@ class rex_api_rexstan extends rex_api_function
                     $this->response(2, $html);
                 } catch (\Throwable $th) {
                     /**
-                     * für alle Fälle auch hier noch mal
+                     * für alle Fälle auch hier noch mal.
                      */
                     rex_config::set('rexstan', 'addons', $addonPaths);
                     RexStanConfig::config2neon();
@@ -140,7 +142,7 @@ class rex_api_rexstan extends rex_api_function
         if ('' === $target) {
             $this->abort(rex_response::HTTP_BAD_REQUEST, '1');
         }
-        $target = rex_path::src('addons/'.$target);
+        $target = rex_path::src('addons/' . $target);
         $realPath = $this->normalizePath($target);
         if ($realPath !== $target) {
             $this->abort(rex_response::HTTP_BAD_REQUEST, '2');
@@ -172,7 +174,7 @@ class rex_api_rexstan extends rex_api_function
     {
         rex_response::cleanOutputBuffers();
         rex_response::setStatus($http_code);
-        rex_response::sendContent($http_code.('' < $message ? ' / '.$message : ''));
+        rex_response::sendContent($http_code . ('' < $message ? ' / ' . $message : ''));
         exit;
     }
 

@@ -15,13 +15,9 @@ namespace Igor\Rexstan;
 use rex_fragment;
 use rex_i18n;
 
-/**
- * @var rex_fragment $this
- */
+/** @var rex_fragment $this */
 
-/**
- * @var int $level
- */
+/** @var int $level */
 $level = $this->level ?? 0;
 
 /**
@@ -74,12 +70,12 @@ $fragment->setVar('sectionAttributes', [
     'class' => 'rexstan-sticky-headline',
 ]);
 $fragment->setVar('class', 'warning');
-$fragment->setVar('options', $searchWidget.'&nbsp;'.$collapseButtons, false);
+$fragment->setVar('options', $searchWidget . '&nbsp;' . $collapseButtons, false);
 // $fragment->setVar('title', 'Level-<strong>'.$level.'</strong>-Analyse: <strong>'. $totalErrors .'</strong> Probleme gefunden in <strong>'. $totalFiles .'</strong> Dateien', false);
 $fragment->setVar('title',
-    rex_i18n::msg('igor_rexstan_analysis_header_a').' <strong>'.$level.'</strong> | '.
-    rex_i18n::msg('igor_rexstan_analysis_header_b').' <strong>'.$totalErrors.'</strong> | '.
-    rex_i18n::msg('igor_rexstan_analysis_header_c').' <strong>'.$totalFiles.'</strong>',
+    rex_i18n::msg('igor_rexstan_analysis_header_a') . ' <strong>' . $level . '</strong> | ' .
+    rex_i18n::msg('igor_rexstan_analysis_header_b') . ' <strong>' . $totalErrors . '</strong> | ' .
+    rex_i18n::msg('igor_rexstan_analysis_header_c') . ' <strong>' . $totalFiles . '</strong>',
     false);
 
 echo $fragment->parse('core/page/section.php');
