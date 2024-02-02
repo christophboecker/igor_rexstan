@@ -53,7 +53,7 @@ $UserConfig = $property->invoke(null);
  * Exclude hinzufügen
  * - help.php wird nicht betrachtet, hat auch keine Referenzen
  */
-$UserConfig['parameters']['excludePaths']['analyseAndScan'][] = '../../../../*/focuspoint/help.php';
+// $UserConfig['parameters']['excludePaths']['analyseAndScan'][] = '../../../../*/focuspoint/help.php';
 
 /**
  * Speichern
