@@ -48,6 +48,7 @@ $property = new ReflectionMethod(\rexstan\RexStanUserConfig::class, 'getPhpStanC
 $property->setAccessible(true);
 /** @var array $UserConfig */
 $UserConfig = $property->invoke(null);
+echo var_dump($UserConfig);
 
 /**
  * Exclude hinzufügen
