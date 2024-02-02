@@ -36,7 +36,7 @@ class rex_api_rexstan extends rex_api_function
     /**
      * @return never
      */
-    public function execute(): void
+    public function execute(    ): void
     {
         $this->assureSameOrigin();
         $this->assureAccessRights();
