@@ -36,12 +36,12 @@ class rex_api_rexstan extends rex_api_function
     /**
      * @return never
      */
-    public function execute(   ): void
+    public function execute(): void
     {
         $this->assureSameOrigin();
         $this->assureAccessRights();
 
-        $action = rex_request::request(  'action', 'int', 0);
+        $action = rex_request::request('action', 'int', 0);
         switch ($action) {
             case 1:
                 // Zieldatei abrufen
