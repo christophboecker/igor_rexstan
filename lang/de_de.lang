@@ -51,3 +51,4 @@ igor_rexstan_analysis_success = Gratulation, es wurden keine Fehler in Level {0}
 igor_rexstan_analysis_nextlevel = In den <a href="{0}">Einstellungen</a>, solltest du jetzt das nächste Level anvisieren.
 igor_rexstan_analysis_tip = Tip anzeigen/ausblenden
 igor_rexstan_analysis_refresh = Neu analysieren
+igor_rexstan_analysis_clipboard = Fehlermeldung kopieren (Clipboard)

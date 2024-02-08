@@ -245,7 +245,7 @@ const Rexstan = {
                 this.__targetNode = document.querySelector(this.__target);
             }
             if (!this.__targetNode) {
-                console.error('Invalid attribute `target="' + this.__target + '"`, search failed');
+                console.warn('Invalid attribute `target="' + this.__target + '"`, search failed');
             }
             return this.__targetNode;
         }
@@ -542,7 +542,7 @@ customElements.define('rexstan-analysis',
  *  - Bei Änderungen der Header-Höhe des Haupt-Header (der mit dem Suchfeld) muss der
  *    Stopp-Punkt des eigenen Headers angepasst werden 
  *    (über Event rexstan:headersize)
- *  - Bendet die Messages ein oder aus (Bootstrap-collapse) wenn angefordert
+ *  - Blendet die Messages ein oder aus (Bootstrap-collapse) wenn angefordert
  *    (über Event rexstan:collapse)
  *  - speichert den aktuellen Collapse-Status in der Session
  *    (über Bootstrap-Events getriggert)
@@ -675,6 +675,7 @@ customElements.define('rexstan-message',
             }
             super.connectedCallback();
             this.addEventListener('rexstan:tip', this._toggleTip.bind(this));
+            this.addEventListener('rexstan:clipboard', this._toClipboard.bind(this));
         }
 
         childrenAvailableCallback() {
@@ -688,6 +689,7 @@ customElements.define('rexstan-message',
         disconnectedCallback() {
             this.__root.removeEventListener(Rexstan.evtSearch, this._applySearch.bind(this));
             this.removeEventListener('rexstan:tip', this._toggleTip.bind(this));
+            this.removeEventListener('rexstan:clipboard', this._toClipboard.bind(this));
         }
 
         _applySearch(event) {
@@ -710,6 +712,9 @@ customElements.define('rexstan-message',
 
         _toggleTip(event) {
             this.classList.toggle('rexstan-tip-closed');
+        }
+        _toClipboard(event) {
+            navigator.clipboard.writeText(`\'${event.detail}\'`);
         }
     }
 );
