@@ -31,6 +31,8 @@ use function array_key_exists;
 use function dirname;
 use function is_int;
 
+use const DIRECTORY_SEPARATOR;
+
 /** @var rex_fragment $this */
 
 /** @var string $link */
@@ -65,11 +67,10 @@ foreach ($result['messages'] as $message) {
 
     $text = rex_escape($message['message']);
     $url = $editor->getUrl($link, $message['line']);
+    $pasteButton = '<rexstan-trigger class="btn btn-xs btn-default" event="rexstan:clipboard" detail="' . $text . '"title="' . rex_i18n::msg('igor_rexstan_analysis_clipboard') . '"><i class="fa fa-clipboard"></i></rexstan-trigger> ';
 
-    if (null === $url) {
-        $text = '<span class="rexstan-message-text">' . $text . '</span>';
-    } else {
-        $text = '<a class="rexstan-message-text" href="' . $url . '">' . $text . '</a>';
+    if (null !== $url) {
+        $text = '<a href="' . $url . '">' . $text . '</a>';
     }
 
     $ignoreClass = $message['ignorable'] ? '' : ' text-danger';
@@ -77,7 +78,7 @@ foreach ($result['messages'] as $message) {
     $content .= '<rexstan-message class="' . $tipClass . '">';
     $content .= '<span class="rexstan-line-number' . $ignoreClass . '">' . $message['line'] . ':</span>';
     $content .= '<rexstan-trigger class="btn btn-xs btn-default btn-tip" event="rexstan:tip" title="' . rex_i18n::msg('igor_rexstan_analysis_tip') . '"><i class="fa fa-lightbulb-o"></i></rexstan-trigger> ';
-    $content .= $text;
+    $content .= '<span class="rexstan-message-text">' . $pasteButton . $text . '</span>';
     $content .= $tip;
     $content .= '</rexstan-message>';
 }
