@@ -1,5 +1,5 @@
 <div>
-  <img align="left" src="https://github.com/christophboecker/igor/raw/main/assets/igor.jpg">  
+  <img align="left" src="https://github.com/christophboecker/igor_rexstan/raw/main/assets/igor.jpg">  
   <div style="height:100%">
     <br>
     <br>
