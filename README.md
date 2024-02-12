@@ -1,9 +1,16 @@
-<table style="width:100%;">
-<tr>
-<td><img src="../igor/assets/igor.jpg"></td>
-<td><h1>IgorRexstan - Ein Igor-Addon</h1>Dein hilfreicher Diener von der Nordwand</td>
-</tr>
-</table>
+<div>
+  <img align="left" src="https://github.com/christophboecker/igor/raw/main/assets/igor.jpg">  
+  <div style="height:100%">
+    <br>
+    <br>
+    <br>
+    <h1>IgorRexstan - Ein Igor-Addon</h1>
+    Dein hilfreicher Diener von der Nordwand
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
 
 Features
 --------
