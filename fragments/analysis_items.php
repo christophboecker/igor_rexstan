@@ -21,7 +21,7 @@
  * aber den vollstänfigen Container.
  */
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use rex_editor;
 use rex_fragment;

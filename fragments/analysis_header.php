@@ -10,7 +10,7 @@
  * Die aktiven Elemente (Zähler, Buttons, Suchfeld sind CustomHTML.
  */
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use rex_fragment;
 use rex_i18n;

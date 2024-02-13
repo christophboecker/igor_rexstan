@@ -20,7 +20,7 @@
  *                  rc=2 => die gefundenen Meldungen (HTML)
  */
 
-use Igor\Rexstan\RexStanConfig;
+use ChristophBoecker\IgorRexstan\RexStanConfig;
 use rex;
 use rex_api_function;
 use rex_fragment;
@@ -95,7 +95,7 @@ class rex_api_rexstan extends rex_api_function
                     $fragment->setVar('result', $fileResult, false);
                     $html = $fragment->parse('analysis_items.php');
                     $this->response(2, $html);
-                } catch (\Throwable $th) {
+                } catch (Throwable $th) {
                     /**
                      * für alle Fälle auch hier noch mal.
                      */

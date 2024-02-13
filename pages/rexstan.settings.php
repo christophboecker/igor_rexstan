@@ -5,7 +5,7 @@
  * Aufbau des Formulars und Speichern der Eingaben sind komplett nach Project\Rexstan\RexStanConfig verlagert.
  */
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use rex_fragment;
 use rex_i18n;

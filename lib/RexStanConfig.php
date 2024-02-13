@@ -13,7 +13,7 @@
  *                  Nuzung durch PhpStan. Achtung: erweiterter Datenumfang!
  */
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use Exception;
 use ReflectionMethod;
@@ -30,7 +30,6 @@ use rex_fragment;
 use rex_i18n;
 use rex_package;
 use rex_path;
-
 use rex_string;
 use rex_version;
 use rexstan\RexStanSettings;
@@ -39,6 +38,10 @@ use rexstan\RexStanUserConfig;
 use function count;
 use function is_array;
 use function is_int;
+
+use const PHP_EOL;
+use const PHP_INT_MIN;
+use const PHP_VERSION_ID;
 
 class RexStanConfig extends rex_config_form
 {
@@ -63,7 +66,7 @@ class RexStanConfig extends rex_config_form
      * Und aus RexstanSettings die Formulardaten (private ...) übernehmen.
      *
      * @param string      $namespace ignorieren und durch self::NAMESPACE ersetzen
-     * @param null|string $fieldset  ignorieren. class:.init macht den Job.
+     * @param string|null $fieldset  ignorieren. class:.init macht den Job.
      * @param bool        $debug
      */
     protected function __construct(string $namespace, $fieldset = null, $debug = false)
@@ -117,7 +120,6 @@ class RexStanConfig extends rex_config_form
          */
         $data = $property->getValue(null);
         self::$phpVersionList = $data;
-
     }
 
     public function init(): void
@@ -190,14 +192,14 @@ class RexStanConfig extends rex_config_form
             if ($optGroup) {
                 $select->addOptgroup($availableAddon->getName());
             }
-            $select->addOption($availableAddon->getName(), RexStansettings::relativePath($availableAddon->getPath()));
+            $select->addOption($availableAddon->getName(), RexStanSettings::relativePath($availableAddon->getPath()));
             if ($optGroup) {
                 foreach ($availablePlugins as $availablePlugin) {
-                    $select->addOption($availableAddon->getName() . ' ⇒ ' . $availablePlugin->getName(), RexStansettings::relativePath($availablePlugin->getPath()));
+                    $select->addOption($availableAddon->getName() . ' ⇒ ' . $availablePlugin->getName(), RexStanSettings::relativePath($availablePlugin->getPath()));
                 }
                 if ('developer' === $availableAddon->getName() && class_exists(rex_developer_manager::class)) {
-                    $select->addOption('developer: modules', RexStansettings::relativePath(rex_developer_manager::getBasePath() . '/modules/'));
-                    $select->addOption('developer: templates', RexStansettings::relativePath(rex_developer_manager::getBasePath() . '/templates/'));
+                    $select->addOption('developer: modules', RexStanSettings::relativePath(rex_developer_manager::getBasePath() . '/modules/'));
+                    $select->addOption('developer: templates', RexStanSettings::relativePath(rex_developer_manager::getBasePath() . '/templates/'));
                 }
                 $select->endOptgroup();
             }
@@ -308,11 +310,11 @@ class RexStanConfig extends rex_config_form
         foreach (rex_package::getAvailablePackages() as $package) {
             $functionsPath = $package->getPath('functions/');
             if (is_dir($functionsPath)) {
-                $neon['parameters']['scanDirectories'][] = rexStanSettings::relativePath($functionsPath);
+                $neon['parameters']['scanDirectories'][] = RexStanSettings::relativePath($functionsPath);
             }
             $functionsPath = $package->getPath('vendor/');
             if (is_dir($functionsPath)) {
-                $neon['parameters']['scanDirectories'][] = rexStanSettings::relativePath($functionsPath);
+                $neon['parameters']['scanDirectories'][] = RexStanSettings::relativePath($functionsPath);
             }
         }
 

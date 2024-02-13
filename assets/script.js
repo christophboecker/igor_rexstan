@@ -251,7 +251,7 @@ const Rexstan = {
         }
 
         _countElements() {
-            if( !this.__targetNode ) {
+            if (!this.__targetNode) {
                 return;
             }
             if (this.__countActive) return;
@@ -266,7 +266,7 @@ const Rexstan = {
             this.__countActive = false;
         }
 
-        _showResult(oldValue=null) {
+        _showResult(oldValue = null) {
             this.innerHTML = this.value || this.zero ? this.__pattern.replace('#', this.value) : '';
             if (null !== oldValue && oldValue !== this.value) {
                 Rexstan.event(this, this.__eventId, { detail: { old: oldValue, new: this.value } });
@@ -344,7 +344,7 @@ const Rexstan = {
         }
 
         _node() {
-            if( this.__node ) {
+            if (this.__node) {
                 return this.__node;
             }
             if ('' < this.__from) {
@@ -467,16 +467,16 @@ const Rexstan = {
     /**
      * Löst das Feuerwerk aus, wenn Level 9 erfolgreich absolviert wurde.
      */
-    hipHipHurray: function() {
+    hipHipHurray: function () {
         let duration = 10 * 1000;
         let animationEnd = Date.now() + duration;
         let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
         function randomInRange(min, max) {
-          return Math.random() * (max - min) + min;
+            return Math.random() * (max - min) + min;
         }
 
-        let interval = setInterval(function() {
+        let interval = setInterval(function () {
             let timeLeft = animationEnd - Date.now();
 
             if (timeLeft <= 0) {
@@ -753,13 +753,13 @@ customElements.define('rexstan-tabset',
             if (activeTab) {
                 let navigation = this.dataset.navigation;
                 let target;
-                if( navigation ) {
+                if (navigation) {
                     target = document.getElementById(navigation);
                 }
-                if( !target ) {
+                if (!target) {
                     target = this.previousElementSibling;
                 }
-                if( target ) {
+                if (target) {
                     target = target.querySelector(`a[href="${activeTab}"]`);
                 }
                 $(target).tab('show');

@@ -5,7 +5,7 @@
  * Die Fehlermeldungen werden in ein CustomHTML <rexstan-analysis> gekapselt.
  */
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use rex_config;
 use rex_fragment;

@@ -5,7 +5,7 @@
  * level    Aktueller Analyse-Level (0...9).
  */
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use rex_fragment;
 use rex_i18n;

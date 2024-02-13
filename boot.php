@@ -1,6 +1,6 @@
 <?php
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use rex;
 use rex_addon;

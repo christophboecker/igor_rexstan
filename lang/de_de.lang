@@ -6,7 +6,7 @@ igor_rexstan_readme = Readme
 igor_rexstan_faq = FAQ
 
 # pages
-igor_rexstan_replaced_warning = Angepasste {0}-Seite via Addon Igor\Rexstan.
+igor_rexstan_replaced_warning = Angepasste {0}-Seite via Addon "igor_rexstan".
 igor_rexstan_see_faq = Weitere Informationen in den FAQ
 
 # settings-form - Tab-Menü

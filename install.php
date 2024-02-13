@@ -1,6 +1,6 @@
 <?php
 
-namespace Igor\Rexstan;
+namespace ChristophBoecker\IgorRexstan;
 
 use rex_addon;
 use rex_config;
@@ -21,7 +21,7 @@ $systemStyleApplied = false;
  * Erstellt eine CSS-Datei basierend auf den Backend-Styles aus dem Addon be_style (falls aktiv).
  * rex_scss_compiler ist verfügbar wenn be_style installiert ist.
  */
-if (class_exists('rex_scss_compiler')) {
+if (class_exists(rex_scss_compiler::class)) {
     try {
         $compiler = new rex_scss_compiler();
         // Klartext-Ausgabe falls man für Tests "lesbares" CSS erzeugen möchte
