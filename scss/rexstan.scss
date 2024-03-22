@@ -38,8 +38,8 @@ $rexstandark-badge-success-bgcolor: $alert-success-bg;
 $rexstan-messagesheader-text-offset: 5rem;
 $rexstan-messagesheader-symbol-indent: $panel-body-padding;
 $rexstan-messagesheader-symbol-size: 140%;
-$rexstan-messagesheader-symbol-open: $fa-var-folder-open;
-$rexstan-messagesheader-symbol-close: $fa-var-folder-o;
+$rexstan-messagesheader-symbol-open: $fa-var-caret-down;
+$rexstan-messagesheader-symbol-close: $fa-var-caret-up;
 
 /**
  * Hinterlegt im bootstrap-select die aktuelle Auswahl 
@@ -116,14 +116,16 @@ rexstan-messages {
         * Symbol für den Collapse-Status
         */
         &:before {
-            content: $rexstan-messagesheader-symbol-open;
-            font-family: FontAwesome;
+            content: unquote("\"#{ $rexstan-messagesheader-symbol-close }\"");
             font-size: $rexstan-messagesheader-symbol-size;
+            font: var(--fa-font-solid);
+            -webkit-font-smoothing: antialiased;
             position: absolute;
-            left: $rexstan-messagesheader-symbol-indent;    
+            left: $rexstan-messagesheader-symbol-indent;
+          
         }
         &.collapsed:before {
-            content: $rexstan-messagesheader-symbol-close;
+            content: unquote("\"#{ $rexstan-messagesheader-symbol-open }\"");
         }
 
         /**
