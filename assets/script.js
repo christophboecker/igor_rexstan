@@ -740,31 +740,42 @@ customElements.define('rexstan-tabset',
             super.connectedCallback();
         }
 
+        /**
+         * den zuletzt aktiven Tab aus der Session ermitteln oder wenn dort
+         * unbekannt wird der erste Tab genommen
+         * 
+         * Die Tab-Navigation (<ul>) heraussuchen. Die ID steht im Attribut
+         * data-navigation.
+         * In der Navigation den aktiven Tab (s.o.) aktivieren.
+         * Event-Listener für Änderungen der Tab-Auswahl draufsetzen.
+         */
         childrenAvailableCallback() {
             this.parsed = true;
-            let activeTab = sessionStorage.getItem(Rexstan.sessionSettingsTabset);
+            let activeTab = sessionStorage.getItem(Rexstan.sessionSettingsTabset);            
             if (!activeTab) {
                 activeTab = this.querySelector(':scope > div[id]');
                 if (activeTab) {
                     activeTab = `#${activeTab.id}`;
+                } else {
+                    return; // es gibt keinen Tab??
                 }
             }
-            console.log(activeTab);
-            if (activeTab) {
-                let navigation = this.dataset.navigation;
-                let target;
-                if (navigation) {
-                    target = document.getElementById(navigation);
-                }
-                if (!target) {
-                    target = this.previousElementSibling;
-                }
-                if (target) {
-                    target = target.querySelector(`a[href="${activeTab}"]`);
-                }
+        
+            // Navigation ermitteln, aktiven Tab dort aktivieren
+            // und SaveToSession auf den Auswahl-Event legen 
+            let navigation = this.dataset.navigation ?? '';
+            if ('' === navigation) {
+                return;
+            }
+            navigation = document.getElementById(navigation);
+            if(! navigation ) {
+                return;
+            }
+            $(navigation).on('shown.bs.tab', this._saveToSession.bind(this));
+            let target = navigation.querySelector(`a[href="${activeTab}"]`);
+            if( target) {
                 $(target).tab('show');
             }
-            $(this.previousElementSibling).on('shown.bs.tab', this._saveToSession.bind(this));
         }
 
         disconnectedCallback() {
