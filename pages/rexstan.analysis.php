@@ -8,6 +8,7 @@
 namespace ChristophBoecker\IgorRexstan;
 
 use rex_config;
+use rex_editor;
 use rex_fragment;
 use rex_i18n;
 use rex_path;
@@ -32,6 +33,11 @@ if ('1' === $clearCache) {
 }
 if ('2' === $clearCache) {
     RexStan::clearResultCache();
+}
+
+$editor = rex_editor::factory();
+if( null === rex_editor::factory()->getName()) {
+    echo rex_view::error('<i class="fa fa-warning"></i> Achtung: die Verlinkung auf den Editor fehlt! Bitte in den Systemeinstellungen ändern.');
 }
 
 /**
