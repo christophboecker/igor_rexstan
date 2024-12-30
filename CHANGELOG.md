@@ -1,5 +1,9 @@
 # CHANGELOG für ChristophBoecker/IgorRexstan
 
+## 1.0.3
+
+- Mindestversion von RexStan ist nun 2.0.0
+
 ## 1.0.2 
 
 - Initial endlich mal das CHANGELOG aufgesetzt
