@@ -32,8 +32,8 @@ use rex_package;
 use rex_path;
 use rex_string;
 use rex_version;
-use rexstan\RexStanSettings;
-use rexstan\RexStanUserConfig;
+use FriendsOfRedaxo\Rexstan\RexStanSettings;
+use FriendsOfRedaxo\Rexstan\RexStanUserConfig;
 
 use function count;
 use function is_array;

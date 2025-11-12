@@ -1,5 +1,9 @@
 # CHANGELOG für ChristophBoecker/IgorRexstan
 
+## 2.0.0
+
+- Umstellung auf Rexstan 3.0 (geänderter Namespace)
+ 
 ## 1.0.3
 
 - Mindestversion von RexStan ist nun 2.0.0

@@ -29,7 +29,7 @@ use rex_path;
 use rex_request;
 use rex_response;
 use rex_view;
-use rexstan\RexStan;
+use FriendsOfRedaxo\Rexstan\RexStan;
 
 class rex_api_rexstan extends rex_api_function
 {
