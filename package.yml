@@ -1,6 +1,6 @@
 package: igor_rexstan
-version: '2.0.0'
-letzte Änderung: 2025-11-12 14:00
+version: '2.0.1'
+letzte Änderung: 2026-01-03 14:00
 author: 'Christoph Böcker'
 supportpage: 'https://github.com/christophboecker/igor_rexstan'
 
@@ -8,9 +8,11 @@ pages:
     rexstan/settings:
         title: translate:igor_rexstan_settings
         icon: fa fa-warning text-info
+        perm: admin
     rexstan/analysis:
         title: translate:igor_rexstan_analysis
         icon: fa fa-warning text-info
+        perm: admin
         linkAttr: 
             onclick: 'Igor.rex_loader.show()'
 
