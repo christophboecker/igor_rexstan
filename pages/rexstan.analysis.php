@@ -14,8 +14,8 @@ use rex_i18n;
 use rex_path;
 use rex_url;
 use rex_view;
-use FriendsOfRedaxo\Rexstan\RexStan;
-use FriendsOfRedaxo\Rexstan\RexStanTip;
+use FriendsOfRedaxo\RexStan\RexStan;
+use FriendsOfRedaxo\RexStan\RexStanTip;
 
 use function array_key_exists;
 use function is_string;

@@ -32,8 +32,8 @@ use rex_package;
 use rex_path;
 use rex_string;
 use rex_version;
-use FriendsOfRedaxo\Rexstan\RexStanSettings;
-use FriendsOfRedaxo\Rexstan\RexStanUserConfig;
+use FriendsOfRedaxo\RexStan\RexStanSettings;
+use FriendsOfRedaxo\RexStan\RexStanUserConfig;
 
 use function count;
 use function is_array;
@@ -446,7 +446,7 @@ class RexStanConfig extends rex_config_form
             if ('~' === $marker[0]) {
                 return substr(rex_path::backend(), 0, -1);
             }
-        }, $paths) ?? [];
+        }, $paths);
         return $paths;
     }
 

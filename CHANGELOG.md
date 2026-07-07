@@ -1,5 +1,9 @@
 # CHANGELOG für ChristophBoecker/IgorRexstan
 
+## 2.0.3
+
+- Namespace-Scheibweise korrigiert: `RexStan` statt `Rexstan`
+
 ## 2.0.2
 
 - `$property->setAccessible(true);` entfernt, da seit PHP 8.1 überflüssing und ab PHP 8.5 deprecated
