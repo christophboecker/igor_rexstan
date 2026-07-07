@@ -85,7 +85,6 @@ class RexStanConfig extends rex_config_form
          * Formularparameter im aktuellen Stand aus RexstanSettings auslesen.
          */
         $property = new ReflectionProperty(RexStanSettings::class, 'phpstanExtensions');
-        $property->setAccessible(true);
         /**
          * STAN: Static property Project\Rexstan\RexStanConfig::$phpstanExtensions (array<string, string>) does not accept mixed.
          * Über die Bande gespielt (Zwischenspeichern in $data) verschwindet die Meldung.
@@ -95,7 +94,6 @@ class RexStanConfig extends rex_config_form
         self::$phpstanExtensions = $data;
 
         $property = new ReflectionProperty(RexStanSettings::class, 'phpstanExtensionDocLinks');
-        $property->setAccessible(true);
         /**
          * STAN: Static property Project\Rexstan\RexStanConfig::$phpstanExtensionDocLinks (array<string, string>) does not accept mixed.
          * Über die Bande gespielt (Zwischenspeichern in $data) verschwindet die Meldung.
@@ -112,7 +110,6 @@ class RexStanConfig extends rex_config_form
             $property = new ReflectionProperty(RexStanSettings::class, 'phpVersionListUpTp5_14');
         }
         // $property = new ReflectionProperty(RexStanSettings::class, 'phpVersionList');
-        $property->setAccessible(true);
         /**
          * STAN: Static property Project\Rexstan\RexStanConfig::$phpVersionList (array<int, string>) does not accept mixed.
          * Über die Bande gespielt (Zwischenspeichern in $data) verschwindet die Meldung.
@@ -405,7 +402,6 @@ class RexStanConfig extends rex_config_form
 
         try {
             $property = new ReflectionMethod(RexStanUserConfig::class, 'getUserConfigPath');
-            $property->setAccessible(true);
             /** @var string $UserConfigPath */
             $UserConfigPath = $property->invoke(null);
             $prefix = '# rexstan auto generated file - do not edit, rename or remove (Project/rexstan | ' . date('Y-m-d H:i:s') . ")\n\n";
